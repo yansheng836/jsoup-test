@@ -10,3 +10,8 @@
 
 项目已上传到github：<https://github.com/yansheng836/jsoup-crawl-csdn>
 
+
+
+### 2.爬取豆瓣电影top250
+
+网址首页：<https://movie.douban.com/top250>

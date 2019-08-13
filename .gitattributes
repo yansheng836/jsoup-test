@@ -1,2 +1,2 @@
-# 不对sql进行代码统计
-*.sql linguist-vendored=false
+﻿# 不对sql进行代码统计
+*.sql linguist-vendored

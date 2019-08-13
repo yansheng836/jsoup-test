@@ -73,14 +73,17 @@ public class Movie {
 
 	@Override
 	public String toString() {
-		
+
 		// 形式1.为了方便控制台打印
 		return "Movie [rank=" + rank + ", title=" + title + ", url=" + url + ", ratingNum=" + ratingNum
 				+ ", ratingPeopleNum=" + ratingPeopleNum + ", quote=" + quote + "]";
-		
-		// 形式2.为了方便保存数据到本地txt
-		// 在将数据写到本地txt保存时，建议用下面这个格式，数据比较干净，有利用导入到数据库等。
-		//return rank + "," + title + "," + url + "," + ratingNum + "," + ratingPeopleNum + "," + quote + "\n";
+
 	}
 
+	/*形式2.为了方便保存数据到本地txt
+	 * 在将数据写到本地txt保存时，建议用下面这个格式，数据比较干净，有利用导入到数据库等。
+	 */
+	public String toStringForWriteToTxt() {
+		return rank + "," + title + "," + url + "," + ratingNum + "," + ratingPeopleNum + "," + quote + "\n";
+	}
 }

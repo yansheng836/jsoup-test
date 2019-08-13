@@ -17,6 +17,8 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import xyz.yansheng.xiaohua2014.XiaoHua;
+
 /**
  * <p>Title: </p>
  * <p>Description: </p>
@@ -47,7 +49,7 @@ public class CrawlMovie {
 		for (Movie movie : movies2) {
 			System.out.println(movie.toString());
 		}*/
-		
+
 		// 3.获取“所有页面-所有电影-25+10=250个”的数据
 		// 测试方法：ArrayList<Movie> crawlAllMovies()
 		ArrayList<Movie> movies3 = crawlAllMovies();
@@ -216,7 +218,7 @@ public class CrawlMovie {
 		for (String url : urlList) {
 			movies.addAll(crawlMovies(url));
 		}
-		
+
 		return movies;
 	}
 
@@ -224,19 +226,22 @@ public class CrawlMovie {
 	public static void writeMoviesToTxt(ArrayList<Movie> movies) {
 
 		// 4.1 先将每个电影对象转化为字符串
-		ArrayList<String> moviesString = new ArrayList<String>(250);
+		int size = movies.size();
+		ArrayList<String> moviesString = new ArrayList<String>(size);
 		for (Movie movie : movies) {
-			moviesString.add(movie.toString());
+			moviesString.add(movie.toStringForWriteToTxt());
 		}
 
 		// 4.2写字节流
-		try (FileOutputStream out = new FileOutputStream("豆瓣电影top250.txt");) {
+		String txtPath = "./1-豆瓣电影top250/0-豆瓣电影top250.txt";
+		try (FileOutputStream out = new FileOutputStream(txtPath);) {
 			for (String string : moviesString) {
 				out.write(string.getBytes());
 			}
+			System.out.println("保存：'" + txtPath + "' 成功！");
 		} catch (IOException e) {
+			System.out.println("保存：'" + txtPath + "' 时，发生异常！");
 			e.printStackTrace();
 		}
-
 	}
 }

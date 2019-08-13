@@ -64,11 +64,11 @@ public class CrawlMovie {
 	public static void crawlMovie() {
 
 		// 1.获取网页
-		final String URL = "https://movie.douban.com/top250";
+		final String picUrl = "https://movie.douban.com/top250";
 
 		Document document = null;
 		try {
-			document = Jsoup.connect(URL).get();
+			document = Jsoup.connect(picUrl).get();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -123,14 +123,14 @@ public class CrawlMovie {
 	}
 
 	// 2.获取“单页-所有电影-25*1=25个”的数据
-	public static ArrayList<Movie> crawlMovies(String URL) {
+	public static ArrayList<Movie> crawlMovies(String picUrl) {
 
 		// 1.获取网页
 		//final String URL = "https://movie.douban.com/top250";
 
 		Document document = null;
 		try {
-			document = Jsoup.connect(URL).get();
+			document = Jsoup.connect(picUrl).get();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

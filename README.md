@@ -20,3 +20,6 @@
 ### 3. 2014大学校花排行榜
 
 网址首页：<http://www.xiaohuar.com/2014.html>
+
+爬取校花的个人相册的照片，如：<http://www.xiaohuar.com/p-1-290.html> 的相册地址为：<http://www.xiaohuar.com/s-1-290.html>。
+

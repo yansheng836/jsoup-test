@@ -1,4 +1,4 @@
-# Compiled class file
+﻿# Compiled class file
 *.class
 
 # Log file
@@ -21,3 +21,10 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+#忽略目录（/2-2014大学校花排行榜/）下的大部分图片
+/2-2014大学校花排行榜/*.jpg
+!/2-2014大学校花排行榜/1-宁波大红鹰学院校花褚青.jpg
+!/2-2014大学校花排行榜/2-南京航空航天大学校花陈都灵.jpg
+!/2-2014大学校花排行榜/3-清华大学校花章泽天.jpg
+!/2-2014大学校花排行榜/4-成都信息工程大学校花周小雅.jpg

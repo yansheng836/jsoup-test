@@ -12,6 +12,11 @@
 
 
 
-### 2.爬取豆瓣电影top250
+### 2. 爬取豆瓣电影top250
 
 网址首页：<https://movie.douban.com/top250>
+
+
+### 3. 2014大学校花排行榜
+
+网址首页：<http://www.xiaohuar.com/2014.html>

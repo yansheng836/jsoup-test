@@ -88,7 +88,12 @@ public class CrawXiaoHua {
 
 		Document document = null;
 		try {
-			document = Jsoup.connect(url).get();
+			/*1.原方法：document = Jsoup.connect(url).get();会出现乱码问题！
+			 *2.处理乱码问题：
+			 * 使用方法：Jsoup.parse(InputStream in, String charsetName, String baseUri) 
+			 * 示例：Document document = Jsoup.parse(new URL(url).openStream(), "GBK", url);
+			 */
+			document = Jsoup.parse(new URL(url).openStream(), "GBK", url);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -127,7 +132,6 @@ public class CrawXiaoHua {
 		Element nameElement = itemElement.selectFirst("p a");
 		String name = nameElement.text();
 		xiaoHua.setName(name);
-		;
 
 		System.out.println(xiaoHua.toString());
 	}
@@ -148,9 +152,11 @@ public class CrawXiaoHua {
 
 		Document document = null;
 		try {
-			// Jsoup.parse(InputStream in, String charsetName, String baseUri) 
-			// Document document = Jsoup.parse(new URL(url).openStream(), "GBK", url);
-			//			document = Jsoup.connect(url).get();
+			/*1.原方法：document = Jsoup.connect(url).get();会出现乱码问题！
+			 *2.处理乱码问题：
+			 * 使用方法：Jsoup.parse(InputStream in, String charsetName, String baseUri) 
+			 * 示例：Document document = Jsoup.parse(new URL(url).openStream(), "GBK", url);
+			 */
 			document = Jsoup.parse(new URL(url).openStream(), "GBK", url);
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -206,9 +212,9 @@ public class CrawXiaoHua {
 			xiaoHuas.add(xiaoHua);
 		}
 
-		for (XiaoHua xiaoHua : xiaoHuas) {
-			System.out.println(xiaoHua.toString());
-		}
+//		for (XiaoHua xiaoHua : xiaoHuas) {
+//			System.out.println(xiaoHua.toString());
+//		}
 		return xiaoHuas;
 
 	}
@@ -229,7 +235,7 @@ public class CrawXiaoHua {
 
 		File dirFile = new File(dirPath);
 		if (!dirFile.exists()) {
-			if (dirFile.mkdir()) {
+			if (dirFile.mkdirs()) {
 				System.out.println("创建文件夹：" + dirPath + " 成功");
 				reslut = 1;
 			} else {
@@ -330,7 +336,14 @@ public class CrawXiaoHua {
 		}
 	}
 
-	// 5.为了简单起见，这里仅仅是将数据保存为txt文件，不保存到excel或者是数据库。
+	/**
+	 * @Title writeXiaoHuasToTxt
+	 * @author yansheng
+	 * @version v1.0
+	 * @date 2019-08-13 22:54:56
+	 * @Description  5.为了简单起见，这里仅仅是将数据保存为txt文件，不保存到excel或者是数据库。
+	 * @param xiaoHuas   校花列表
+	 */
 	public static void writeXiaoHuasToTxt(ArrayList<XiaoHua> xiaoHuas) {
 
 		// 5.1 先将每个电影对象转化为字符串

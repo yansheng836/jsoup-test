@@ -20,12 +20,12 @@ public class Movie {
 
 	//	 排名，电影名，电影的豆瓣页网址，(国家，放映年份)，平均评分，评价人数，引用（一句话评语）
 
-	private Integer rank;
-	private String title;
-	private String url;
-	private Double ratingNum;
-	private Integer ratingPeopleNum;
-	private String quote;
+	protected Integer rank;
+	protected String title;
+	protected String url;
+	protected Double ratingNum;
+	protected Integer ratingPeopleNum;
+	protected String quote;
 
 	public String getUrl() {
 		return url;

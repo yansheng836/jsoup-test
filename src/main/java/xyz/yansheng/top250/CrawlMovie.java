@@ -66,11 +66,11 @@ public class CrawlMovie {
 	public static void crawlMovie() {
 
 		// 1.获取网页
-		final String picUrl = "https://movie.douban.com/top250";
+		final String moviePageUrl = "https://movie.douban.com/top250";
 
 		Document document = null;
 		try {
-			document = Jsoup.connect(picUrl).get();
+			document = Jsoup.connect(moviePageUrl).get();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -112,8 +112,8 @@ public class CrawlMovie {
 		System.out.println("ratingPeopleNumString:" + ratingPeopleNumString.toString());
 
 		// 注意这里文本是：1539997人评价，我们需要选取其中人数，进行裁剪
-		movie.setRatingPeopleNum(
-				new Integer(ratingPeopleNumString.substring(0, ratingPeopleNumString.length() - 3)));
+		movie.setRatingPeopleNum(new Integer(
+				ratingPeopleNumString.substring(0, ratingPeopleNumString.length() - 3)));
 
 		// 3.6 一句话简评
 		Element quoteElement = itemElement.select("p.quote span.inq").first();
@@ -125,14 +125,14 @@ public class CrawlMovie {
 	}
 
 	// 2.获取“单页-所有电影-25*1=25个”的数据
-	public static ArrayList<Movie> crawlMovies(String picUrl) {
+	public static ArrayList<Movie> crawlMovies(String moviePageUrl) {
 
 		// 1.获取网页
-		//final String URL = "https://movie.douban.com/top250";
+		//final String moviePageUrl = "https://movie.douban.com/top250";
 
 		Document document = null;
 		try {
-			document = Jsoup.connect(picUrl).get();
+			document = Jsoup.connect(moviePageUrl).get();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -168,8 +168,8 @@ public class CrawlMovie {
 			// 3.5评价人数
 			Element ratingPeopleNumElement = element.select("div.star span").last();
 			String ratingPeopleNumString = ratingPeopleNumElement.text();
-			movie.setRatingPeopleNum(
-					new Integer(ratingPeopleNumString.substring(0, ratingPeopleNumString.length() - 3)));
+			movie.setRatingPeopleNum(new Integer(
+					ratingPeopleNumString.substring(0, ratingPeopleNumString.length() - 3)));
 
 			// 3.6 一句话简评
 			Element quoteElement = element.select("p.quote span.inq").first();

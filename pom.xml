@@ -33,7 +33,7 @@
 		<dependency>
 			<groupId>com.kennycason</groupId>
 			<artifactId>kumo-tokenizers</artifactId>
-			<version>1.22</version>
+			<version>1.27</version>
 		</dependency>
 
 		<dependency>
